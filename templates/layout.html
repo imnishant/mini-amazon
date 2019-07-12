@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- {{variable_name}} is used to use python variable which has been passed to the html-->
+        {% if title %}
+        <title>
+            {{title}}
+        </title>
+        {% else %}
+        <title>Amazon</title>
+        {% endif %}
+    </head>
+    <body>
+        <center>
+            <p>Welcome to Mini-Amazon!</p>
+        </center>
+        {% block body %}
+
+        {% endblock body %}
+
+    </body>
+    <footer>
+        <p> &copy; Mini Amazon 2018</p><hr>
+        {% if page == 'home' %}
+            <a href="/contact">Contact</a>
+            <a href="/about">About</a>
+        {% elif page == 'contact' %}
+        <a href="/about">About</a>
+            <a href="/">Home</a>
+        {% elif page == 'about' %}
+            <a href="/contact">Contact</a>
+            <a href="/">Home</a>
+        {% endif %}
+        {% if session %}
+        <a href="/logout">Logout</a>
+        {% endif %}
+        
+    </footer>
+</html>
