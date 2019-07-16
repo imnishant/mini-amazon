@@ -1,0 +1,25 @@
+{% extends 'layout.html'%}
+{% block body%}
+
+<p>This is the signup page</p>
+
+<!-- Signup Form -->
+<form class="register-form" action="/signup" method="POST">
+        <input type="text" name="username" placeholder="Enter Username"/>
+        <input type="password" placeholder="Enter Password" name="password1"/>
+        <input type="password" name="password2" placeholder="Re-enter Password">
+
+        <p>Customer Type</p><br>
+        <p>Buyer</p>
+        <input type="radio" name="type" value="buyer">
+        <p>Seller</p>
+        <input type="radio" name="type" value="seller">
+        <button type="submit">Create Account</button>
+
+
+      </form>
+    </div>
+  </div>
+
+
+{% endblock body%}

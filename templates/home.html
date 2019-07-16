@@ -3,14 +3,37 @@
 
 <p>This is the home page</p>
 {% if session %}
-<p>Wohoo! You are signed in.</p>
+        <p>Wohoo! <b>{{session['username']}}</b>, you are signed in.</p>
+        <p>Y're signed in as {{session['c_type']}}</p>
+        {% if session['c_type'] == 'buyer' %}
+        <p><a href="#">Click here</a> to look at the products available for sale</p>
+        <p><a href="#">Click here</a> to look at your cart</p>
+        {% else %}
+        <p>Add Product Below</p>
+        <center>
+                <form action="/products" method="POST">
+                        <input type="text" name="name" placeholder="enter product name...">
+                        <input type="text" name="description" placeholder="describe your product">
+                        <input type="text" name="price" placeholder="enter product price">
+                        <input type="submit" value="Add Product">
+                </form>
+        </center>
+        <p><a href="#">Click here</a> to look at the product you have</p>
+        {% endif %}
 {% else %}
- <!-- Login Form -->
- <p>Login</p>
-    <form action="/login" method="POST">
-            <input type="text" name="username" placeholder="Enter Username">
-            <input type="password" name="password" placeholder="Enter Password">
-            <input type="submit" value="Login">
-    </form>
+<!-- Login Form -->
+
+<div class="login-page">
+<div class="form">
+                <form class="login-form" action="/login" method="POST">
+                                <input type="text" placeholder="username" name="username"/>
+                                <input type="password" placeholder="password" name="password"/>
+                                <button type="submit">Login</button>
+                                <p class="message">Not registered? <a href="/signup">Create an account</a></p>
+                              </form>
+                            </div>
+                          </div>
+
 {% endif %}
+
 {% endblock body%}
